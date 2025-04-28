@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0kc3i6h7u5iw"]
+
+[ext_resource type="Script" path="res://scripts/enemy_2.gd" id="1_0hhed"]
+[ext_resource type="Texture2D" uid="uid://cufj85u1qxicl" path="res://assets/sprites/Designs/yellow.png" id="2_u2tes"]
+[ext_resource type="PackedScene" uid="uid://csngi72o4ck2g" path="res://scenes/killarea.tscn" id="3_55tap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j25b"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p676"]
+
+[node name="enemy2" type="CharacterBody2D"]
+script = ExtResource("1_0hhed")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u2tes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1j25b")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="killarea" parent="." instance=ExtResource("3_55tap")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killarea"]
+shape = SubResource("RectangleShape2D_8p676")
