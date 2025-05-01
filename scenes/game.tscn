@@ -78,21 +78,21 @@ target_to_chase = NodePath("../Player1")
 position = Vector2(-514, -269)
 target_to_chase = NodePath("../Player2")
 
-[node name="HeartUI_Player 1" parent="." instance=ExtResource("10_m8pxf")]
-offset_left = -537.0
+[node name="HeartUI_Player1" parent="." instance=ExtResource("10_m8pxf")]
+offset_left = 447.0
 offset_top = -290.0
-offset_right = -497.0
+offset_right = 487.0
 offset_bottom = -250.0
 
-[node name="HeartUI_Player 2" parent="." instance=ExtResource("10_m8pxf")]
+[node name="HeartUI_Player2" parent="." instance=ExtResource("10_m8pxf")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 447.0
+offset_left = -537.0
 offset_top = -290.0
-offset_right = 487.0
+offset_right = -497.0
 offset_bottom = -250.0
 grow_horizontal = 0
 grow_vertical = 0

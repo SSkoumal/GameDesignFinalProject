@@ -5,9 +5,15 @@ const JUMP_VELOCITY = -400.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health := 3
+var heart_ui
+var invincible = false
+
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var heart_ui = get_node("/root/Game/HeartUI_Player1")
+func _ready():
+	await get_tree().process_frame  # Wait one frame so the scene fully loads
+	heart_ui = get_parent().get_node("HeartUI_Player2")
+	print("Heart UI successfully loaded for Player 2:", heart_ui)
 
 func _physics_process(delta):
 	# Apply gravity
@@ -37,15 +43,63 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider.is_in_group("enemy"):
-			take_damage()
-			collider.queue_free()
+			take_damage(collider)
 
-func take_damage():
+
+
+func take_damage(enemy: CharacterBody2D = null):
+	if invincible:
+		print("Player is invincible — no damage")
+		return
+
+	invincible = true
 	health -= 1
-	heart_ui.update_hearts(health)
-	print("Player 2 took damage! Health:", health)
+	print("Player took damage! Health:", health)
+
+	if heart_ui:
+		heart_ui.update_hearts(health)
+
+	var found_enemies = get_tree().get_nodes_in_group("enemy")
+	print("Found enemies in group:", found_enemies.size())
+
+	# Custom wreset for each enemy
+	# Reset all enemies to their spots
+	for e in get_tree().get_nodes_in_group("enemy"):
+		print("Resetting enemy:", e.name)
+
+		match e.name:
+			"enemy1":
+				print("enemy1 -> (537, -290)")
+				e.global_position = Vector2(537, -290)
+			"enemy2":
+				print("enemy2 -> (-447, -290)")
+				e.global_position = Vector2(-447, -290)
+			_:
+				print(e.name, "-> (20, 20)")
+				e.global_position = Vector2(20, 20)
+
+		e.velocity = Vector2.ZERO
+		e.can_chase = false
+		e.velocity = Vector2(0, -100)
+
+		var this_enemy = e
+		var timer := get_tree().create_timer(1.0)
+		timer.timeout.connect(func():
+			print(this_enemy.name, "can now chase again")
+			this_enemy.can_chase = true
+		)
+
+
 	if health <= 0:
 		die()
+		return
+	else:
+		await get_tree().create_timer(0.5).timeout
+		invincible = false
+		print("Player is now vulnerable again")
+
+
+
 
 func die():
 	print("Player 2 Died!")
