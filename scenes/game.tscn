@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp6bhfobkxc8p"]
+[gd_scene load_steps=14 format=3 uid="uid://dp6bhfobkxc8p"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_eiep6"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jagpq"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d4fxhlo38t0sd" path="res://scenes/player_2.tscn" id="4_r8tv1"]
 [ext_resource type="PackedScene" uid="uid://ct84721d5risd" path="res://scenes/enemy_1.tscn" id="5_h2xig"]
 [ext_resource type="PackedScene" uid="uid://b0kc3i6h7u5iw" path="res://scenes/enemy_2.tscn" id="8_0pwtk"]
-[ext_resource type="PackedScene" uid="uid://n8vsq2qoa75w" path="res://scenes/heart_ui.tscn" id="10_m8pxf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wip2l"]
 vertices = PackedVector2Array(557, 293, -542.023, 293, -287, 266, -195, 266, 417, 230, 301, 230, -351, 186, -147, 186, 481, -170, 349, -170, -287, -214, -195, -214, 337, -90, 157, -90, -351, -134, -147, -134, 337, 70, 157, 70, -287, 26, -211, 26, -403, 266, 481, 150, 349, 150, 337, 106, 433, 26, 337, -54, 433, -10, 285, -10, 157, -54, 481, -134, 557, -294, 417, -214, 417, -250, 481, 186, 417, 266, 349, 186, -542.977, -294, 301, -250, 349, -134, 145, -134, 145, -170, 61, -10, -159, -54, -159, -90, -339, -90, -467, -134, 285, 26, 209, 26, 209, -10, -159, 106, -159, 70, 157, 106, 145, 150, 29, 150, -339, 70, -435, 26, 145, 186, 301, 266, 209, 266, 209, 230, 93, 230, -467, 186, 301, -214, 209, -214, 209, -250, 93, -250, 29, -170, -403, 230, 61, 26, -63, -10, -339, -54, -435, -10, -467, 150, -339, 106, -351, 150, -63, 26, -211, -10, -287, -10, -15, 150, 29, -134, -15, -134, -15, -170, -147, -170, -403, -214, -351, -170, 29, 186, -15, 186, -147, 150, 93, -214, -79, -214, -79, -250, -195, -250, -467, -170, -403, -250, -287, -250, -287, 230, 93, 266, -79, 266, -79, 230, -195, 230)
@@ -77,22 +76,3 @@ target_to_chase = NodePath("../Player1")
 [node name="enemy2" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("8_0pwtk")]
 position = Vector2(-514, -269)
 target_to_chase = NodePath("../Player2")
-
-[node name="HeartUI_Player1" parent="." instance=ExtResource("10_m8pxf")]
-offset_left = 447.0
-offset_top = -290.0
-offset_right = 487.0
-offset_bottom = -250.0
-
-[node name="HeartUI_Player2" parent="." instance=ExtResource("10_m8pxf")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -537.0
-offset_top = -290.0
-offset_right = -497.0
-offset_bottom = -250.0
-grow_horizontal = 0
-grow_vertical = 0
