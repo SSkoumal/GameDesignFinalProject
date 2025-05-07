@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxyjwmkxfs8sl"
-path="res://.godot/imported/Screenshot 2025-04-29 at 4.47.28 PM.png-ee6d54989c7b29023e9957bdfea93c06.ctex"
+uid="uid://dxym7qx6u5swt"
+path="res://.godot/imported/HeartPNG.png-42ee88c7e906b6ea23d845d1a6e83074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Screenshot 2025-04-29 at 4.47.28 PM.png"
-dest_files=["res://.godot/imported/Screenshot 2025-04-29 at 4.47.28 PM.png-ee6d54989c7b29023e9957bdfea93c06.ctex"]
+source_file="res://assets/sprites/HeartPNG.png"
+dest_files=["res://.godot/imported/HeartPNG.png-42ee88c7e906b6ea23d845d1a6e83074.ctex"]
 
 [params]
 
