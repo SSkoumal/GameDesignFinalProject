@@ -9,9 +9,9 @@ func add_point():
 	score += 1
 	score_label.text = str(score)
 
-	if score == 1:
+	if score == 3:
 		change_level("res://scenes/Level2.tscn")
-	elif score == 2:
+	elif score == 6:
 		change_level("res://scenes/Level3.tscn")
 
 func change_level(new_level_path: String):
