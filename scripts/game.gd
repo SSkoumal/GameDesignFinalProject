@@ -30,3 +30,11 @@ func _spawn_collectibles(amount):
 		coin.game_manager = game_manager  # Pass the reference manually!
 		coin.add_to_group("collectibles")  # So we can easily count them later
 		add_child(coin)
+		
+func reset_collectibles():
+	# Remove all existing collectibles
+	for node in get_tree().get_nodes_in_group("collectibles"):
+		node.queue_free()
+
+	time_accumulator = 0.0
+	_spawn_collectibles(MAX_COLLECTIBLES)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyjcn27j36hu8"]
+[gd_scene load_steps=7 format=3 uid="uid://cyjcn27j36hu8"]
 
 [ext_resource type="Script" path="res://scripts/player_1.gd" id="1_4sva0"]
 [ext_resource type="Texture2D" uid="uid://c4br6y8jmr0tu" path="res://assets/sprites/Designs/blue.png" id="1_jp5gl"]
+[ext_resource type="AudioStream" uid="uid://bj127iu1u6wq5" path="res://assets/sounds/hurt.wav" id="3_bvy3q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghoyo"]
 atlas = ExtResource("1_jp5gl")
@@ -32,3 +33,6 @@ frame_progress = 0.435401
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6qwu4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bvy3q")

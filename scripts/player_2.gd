@@ -16,6 +16,7 @@ var _shoot_timer := 0.0
 var gravity2 = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var sound_player = $AudioStreamPlayer2D
 func _ready():
 	await get_tree().process_frame  # Wait one frame so the scene fully loads
 	heart_ui = get_parent().get_node("HeartUI_Player2")
@@ -113,6 +114,7 @@ func take_damage(enemy: CharacterBody2D = null):
 		die()
 		return
 	else:
+		sound_player.play()
 		print("not dying 2")
 		await get_tree().create_timer(0.5).timeout
 		invincible = false
