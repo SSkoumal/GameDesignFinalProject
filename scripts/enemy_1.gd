@@ -8,7 +8,11 @@ extends CharacterBody2D
 const SPEED = 120.0
 var start_position: Vector2
 
+var owner_id = "player_1"   # or "Player_2" for enemy_2.gd
+var health = 1
+
 func _ready():
+	add_to_group("enemy")
 	start_position = global_position
 
 
@@ -39,4 +43,9 @@ func _physics_process(delta: float) -> void:
 	velocity = global_position.direction_to(navigation_agent.get_next_path_position()) * SPEED
 	move_and_slide()
 	
+func take_damage():
+	health -= 1
+	if health <= 0:
+		queue_free()
+
 	

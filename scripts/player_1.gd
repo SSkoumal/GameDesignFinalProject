@@ -8,6 +8,13 @@ var health := 3
 var heart_ui
 var invincible = false
 
+var ammo: int = 100
+const BULLET_SCENE := preload("res://scenes/bullet.tscn")
+var shoot_cooldown := 0.25
+var _shoot_timer := 0.0
+
+var gravity2 = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @onready var animated_sprite = $AnimatedSprite2D
 func _ready():
 	await get_tree().process_frame  # Wait one frame so the scene fully loads
@@ -34,7 +41,17 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	_shoot_timer = max(0.0, _shoot_timer - delta)
 
+	var shoot_dir = Vector2(
+		Input.get_action_strength("aim_right_1") - Input.get_action_strength("aim_left_1"),
+		Input.get_action_strength("aim_down_1") - Input.get_action_strength("aim_up_1")
+	)
+	
+	if shoot_dir != Vector2.ZERO and Input.is_action_pressed("shoot_1"):
+		if _shoot_timer == 0 and ammo > 0:
+			_shoot_timer = shoot_cooldown
+			_spawn_bullet(shoot_dir.normalized())
 	move_and_slide()
 
 	# Collision detection
@@ -44,6 +61,13 @@ func _physics_process(delta):
 		if collider.is_in_group("enemy"):
 			take_damage(collider)
 
+
+func _spawn_bullet(dir: Vector2) -> void:
+	var bullet = BULLET_SCENE.instantiate()
+	bullet.position = position
+	bullet.direction = dir
+	bullet.owner_id = "player_1"
+	get_tree().current_scene.add_child(bullet)
 
 func take_damage(enemy: CharacterBody2D = null):
 	if invincible:
