@@ -66,13 +66,13 @@ func _physics_process(delta):
 
 
 func take_damage(enemy: CharacterBody2D = null):
-	if invincible:
-		print("Player is invincible — no damage")
-		return
-
-	invincible = true
+	#if invincible:
+		#print("Player is invincible — no damage")
+		#return
+#
+	#invincible = true
 	health -= 1
-	print("Player took damage! Health:", health)
+	print("Player 1 took damage! Health:", health)
 
 	if heart_ui:
 		heart_ui.update_hearts(health)
@@ -107,11 +107,13 @@ func take_damage(enemy: CharacterBody2D = null):
 			this_enemy.can_chase = true
 		)
 
-
+	print("test player 2")
 	if health <= 0:
+		print("dying 2")
 		die()
 		return
 	else:
+		print("not dying 2")
 		await get_tree().create_timer(0.5).timeout
 		invincible = false
 		print("Player is now vulnerable again")

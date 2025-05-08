@@ -70,13 +70,13 @@ func _spawn_bullet(dir: Vector2) -> void:
 	get_tree().current_scene.add_child(bullet)
 
 func take_damage(enemy: CharacterBody2D = null):
-	if invincible:
-		print("Player is invincible — no damage")
-		return
-
-	invincible = true
+	#if invincible:
+		#print("Player is invincible — no damage")
+		#return
+#
+	#invincible = true
 	health -= 1
-	print("Player took damage! Health:", health)
+	print("Player 2 took damage! Health:", health)
 	
 	
 	if heart_ui:
