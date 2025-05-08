@@ -8,6 +8,12 @@ var health := 3
 var heart_ui
 var invincible = false
 
+var ammo: int = 100
+const BULLET_SCENE := preload("res://scenes/bullet.tscn")
+var shoot_cooldown := 0.25
+var _shoot_timer := 0.0
+
+var gravity2 = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
 func _ready():
@@ -36,6 +42,18 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	_shoot_timer = max(0.0, _shoot_timer - delta)
+
+# --- Shoot input (Down arrow) ---
+	var shoot_dir = Vector2(
+		Input.get_action_strength("aim_right_2") - Input.get_action_strength("aim_left_2"),
+		Input.get_action_strength("aim_down_2") - Input.get_action_strength("aim_up_2")
+	)
+	
+	if shoot_dir != Vector2.ZERO and Input.is_action_pressed("shoot_2"):
+		if _shoot_timer == 0 and ammo > 0:
+			_shoot_timer = shoot_cooldown
+			_spawn_bullet(shoot_dir.normalized())
 	move_and_slide()
 
 	# Collision detection
@@ -48,13 +66,13 @@ func _physics_process(delta):
 
 
 func take_damage(enemy: CharacterBody2D = null):
-	if invincible:
-		print("Player is invincible — no damage")
-		return
-
-	invincible = true
+	#if invincible:
+		#print("Player is invincible — no damage")
+		#return
+#
+	#invincible = true
 	health -= 1
-	print("Player took damage! Health:", health)
+	print("Player 1 took damage! Health:", health)
 
 	if heart_ui:
 		heart_ui.update_hearts(health)
@@ -89,16 +107,24 @@ func take_damage(enemy: CharacterBody2D = null):
 			this_enemy.can_chase = true
 		)
 
-
+	print("test player 2")
 	if health <= 0:
+		print("dying 2")
 		die()
 		return
 	else:
+		print("not dying 2")
 		await get_tree().create_timer(0.5).timeout
 		invincible = false
 		print("Player is now vulnerable again")
 
 
+func _spawn_bullet(dir: Vector2) -> void:
+	var bullet = BULLET_SCENE.instantiate()
+	bullet.position = position
+	bullet.direction = dir
+	bullet.owner_id = "player_2"
+	get_tree().current_scene.add_child(bullet)
 
 
 func die():

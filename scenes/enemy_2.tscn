@@ -8,6 +8,7 @@
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8p676"]
+size = Vector2(26, 24)
 
 [node name="enemy2" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_0hhed")

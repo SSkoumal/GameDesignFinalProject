@@ -4,11 +4,15 @@ extends CharacterBody2D
 @export var target_to_chase: CharacterBody2D
 @export var can_chase: bool = true
 
-
-const SPEED = 120.0
+#120
+const SPEED = 30.0 
 var start_position: Vector2
 
+var owner_id = "player_1"   # or "Player_2" for enemy_2.gd
+var health = 1
+
 func _ready():
+	add_to_group("enemy")
 	start_position = global_position
 
 
@@ -39,4 +43,16 @@ func _physics_process(delta: float) -> void:
 	velocity = global_position.direction_to(navigation_agent.get_next_path_position()) * SPEED
 	move_and_slide()
 	
+#func take_damage():
+	#health -= 1
+	#if health <= 0:
+		#queue_free()
+		
+func take_damage():
+	health -= 1
+	if health <= 0:
+		print("enemy1 -> (-537, -290)")
+		global_position = Vector2(-537, -290)
+
+
 	
