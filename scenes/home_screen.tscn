@@ -227,14 +227,42 @@ anchors_preset = -1
 anchor_right = 3.747
 anchor_bottom = 1.961
 offset_left = 3.0
-offset_top = 164.0
+offset_top = 28.0
 offset_right = 1155.0
-offset_bottom = 395.0
+offset_bottom = 170.0
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = SubResource("FontFile_13ocn")
 text = "Protect Your Ally"
 label_settings = SubResource("LabelSettings_k01jj")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="Label2" type="Label" parent="Node2D"]
+offset_left = 253.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 377.0
+theme_override_font_sizes/font_size = 20
+text = "Player 1:
+Left - A
+Right - D
+Jump - W
+Shoot - Tab
+Yellow enemy is trying to kill you
+You can kill the green enemy"
+
+[node name="Label3" type="Label" parent="Node2D"]
+offset_left = 595.0
+offset_top = 165.0
+offset_right = 911.0
+offset_bottom = 379.0
+theme_override_font_sizes/font_size = 20
+text = "Player 2:
+Left - Left Arrow
+Right - Right Arrow
+Jump - Up Arrow
+Shoot - Shift
+Green enemy is trying to kill you
+You can kill the yellow enemy"
 
 [connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]
