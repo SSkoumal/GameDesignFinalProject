@@ -56,8 +56,10 @@ func change_level(new_level_path: String):
 	enemy2.global_position = Vector2(447, -290)
 
 	# Teleport players
-	player1.global_position = Vector2(-300, 0)
-	player2.global_position = Vector2(300, 0)
+	if is_instance_valid(player1):
+		player1.global_position = Vector2(-300, 0)
+	if is_instance_valid(player2):
+		player2.global_position = Vector2(300, 0)
 
 	# Reset collectibles
 	var game_node = get_parent()  

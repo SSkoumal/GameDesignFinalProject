@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var can_chase: bool = true
 
 
-const SPEED = 30.0
+const SPEED = 100.0
 var start_position: Vector2
 
 var owner_id = "player_2"   # or "Player_2" for enemy_2.gd
