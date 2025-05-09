@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpi0u8segwxij"]
+[gd_scene load_steps=8 format=3 uid="uid://cpi0u8segwxij"]
 
 [ext_resource type="Script" path="res://scripts/home_screen.gd" id="1_e24hx"]
 [ext_resource type="Texture2D" uid="uid://bcg4xqd0wfk8a" path="res://assets/sprites/world_tileset.png" id="2_daf4y"]
+[ext_resource type="FontFile" uid="uid://uonuprolcoeg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_nypsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hrxpw"]
 texture = ExtResource("2_daf4y")
@@ -137,38 +138,6 @@ texture = ExtResource("2_daf4y")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hrxpw")
 
-[sub_resource type="FontFile" id="FontFile_5hkof"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/2/0/ascent = 0.0
-cache/0/2/0/descent = 0.0
-cache/0/2/0/underline_position = 0.0
-cache/0/2/0/underline_thickness = 0.0
-cache/0/2/0/scale = 1.0
-cache/0/3/0/ascent = 0.0
-cache/0/3/0/descent = 0.0
-cache/0/3/0/underline_position = 0.0
-cache/0/3/0/underline_thickness = 0.0
-cache/0/3/0/scale = 1.0
-cache/0/70/0/ascent = 0.0
-cache/0/70/0/descent = 0.0
-cache/0/70/0/underline_position = 0.0
-cache/0/70/0/underline_thickness = 0.0
-cache/0/70/0/scale = 1.0
-cache/0/100/0/ascent = 0.0
-cache/0/100/0/descent = 0.0
-cache/0/100/0/underline_position = 0.0
-cache/0/100/0/underline_thickness = 0.0
-cache/0/100/0/scale = 1.0
-cache/0/120/0/ascent = 0.0
-cache/0/120/0/descent = 0.0
-cache/0/120/0/underline_position = 0.0
-cache/0/120/0/underline_thickness = 0.0
-cache/0/120/0/scale = 1.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ksda"]
 bg_color = Color(0.0588235, 0.513726, 0.886275, 1)
 
@@ -176,21 +145,6 @@ bg_color = Color(0.0588235, 0.513726, 0.886275, 1)
 content_margin_top = 21.0
 bg_color = Color(0.0535823, 0.650413, 0.88526, 1)
 anti_aliasing = false
-
-[sub_resource type="FontFile" id="FontFile_13ocn"]
-cache/0/100/0/ascent = 0.0
-cache/0/100/0/descent = 0.0
-cache/0/100/0/underline_position = 0.0
-cache/0/100/0/underline_thickness = 0.0
-cache/0/100/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_k01jj"]
-font_size = 100
 
 [node name="HomeScreen" type="Control"]
 layout_mode = 3
@@ -211,13 +165,13 @@ layer_0/tile_data = PackedInt32Array(65539, 131072, 9, -65536, 131072, 9, -65535
 anchors_preset = -1
 anchor_right = 3.72
 anchor_bottom = 2.085
-offset_left = 249.0
-offset_top = 383.0
-offset_right = 911.0
-offset_bottom = 532.0
+offset_left = 116.0
+offset_top = 457.0
+offset_right = 994.0
+offset_bottom = 606.0
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = SubResource("FontFile_5hkof")
-theme_override_font_sizes/font_size = 120
+theme_override_fonts/font = ExtResource("3_nypsr")
+theme_override_font_sizes/font_size = 80
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ksda")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5iitf")
 text = "Start Game"
@@ -231,9 +185,9 @@ offset_top = 28.0
 offset_right = 1155.0
 offset_bottom = 170.0
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = SubResource("FontFile_13ocn")
+theme_override_fonts/font = ExtResource("3_nypsr")
+theme_override_font_sizes/font_size = 60
 text = "Protect Your Ally"
-label_settings = SubResource("LabelSettings_k01jj")
 horizontal_alignment = 1
 uppercase = true
 
